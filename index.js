@@ -49,7 +49,7 @@ for (var idx in configs) {
       }
     }
     console.log('-> new relic', opts);
-    request(opts, function (err, res, body) {
+    request.post(opts, function (err, res, body) {
       console.log('new relic <-', err, body);
     });
 
