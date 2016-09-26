@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "Webhook adapter",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stenington/nrwantsheaders.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "engines": {
-    "npm": "6.6.0"
+    "npm": "6.x"
   },
-  "author": "",
+  "author": "Mike Larsson",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
