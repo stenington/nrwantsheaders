@@ -26,7 +26,8 @@ for (var key in process.env) {
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
-for (var config in configs) {
+for (var idx in configs) {
+  var config = configs[idx];
   var path = config.webhook_path;
   var app_id = config.app_id;
   var key = config.key;
