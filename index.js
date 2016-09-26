@@ -35,7 +35,7 @@ for (var idx in configs) {
   app.post('/' + path, function (req, res, next) {
     console.log('heroku ->', req.body);
 
-    request({
+    var opts = {
       url: 'https://api.newrelic.com/v2/applications/' + app_id + '/deployments.json',
       headers: {
         'X-Api-Key': key
@@ -47,7 +47,9 @@ for (var idx in configs) {
           user: req.body.user
         }
       }
-    }, function (err, res, body) {
+    }
+    console.log('-> new relic', opts);
+    request(opts, function (err, res, body) {
       console.log('new relic <-', err, body);
     });
 
