@@ -1,7 +1,7 @@
 {
   "name": "hook",
   "version": "1.0.0",
-  "description": "Webhook adapter",
+  "description": "Heroku deploy hook -> New Relic API adapter",
   "main": "index.js",
   "repository": {
     "type": "git",

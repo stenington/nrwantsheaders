@@ -1,0 +1,19 @@
+{
+  "name": "nrwantsheaders",
+  "description": "Heroku deploy hook -> New Relic API adapter",
+  "repository": "https://github.com/stenington/nrwantsheaders.git",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": [],
+	"env": {
+    "WEBHOOK_PATH_1": {
+      "description": "Path for the first webhook",
+			"generator": "secret"
+		},
+		"NEW_RELIC_KEY_1": {
+		  "description": "New Relic API key for first webhook"
+		},
+		"NEW_RELIC_APP_ID_1": {
+		  "description": "New Relic app id for first webhook"
+		},
+	}
+}
