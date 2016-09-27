@@ -26,19 +26,14 @@ for (var key in process.env) {
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
-for (var idx in configs) {
-  var config = configs[idx];
-  var path = config.webhook_path;
-  var app_id = config.app_id;
-  var key = config.key;
-
-  app.post('/' + path, function (req, res, next) {
+configs.forEach(function (config) {
+  app.post('/' + config.webhook_path, function (req, res, next) {
     console.log('heroku ->\n', JSON.stringify(req.body, null, 2));
 
     var opts = {
-      url: 'https://api.newrelic.com/v2/applications/' + app_id + '/deployments.json',
+      url: 'https://api.newrelic.com/v2/applications/' + config.app_id + '/deployments.json',
       headers: {
-        'X-Api-Key': key
+        'X-Api-Key': config.key
       },
       json: {
         deployment: {
@@ -55,7 +50,7 @@ for (var idx in configs) {
 
     res.status(200).send('OK');
   });
-}
+});
 
 var port = process.env['PORT'];
 app.listen(port, function () {
