@@ -2,7 +2,7 @@
   "name": "nrwantsheaders",
   "description": "Heroku deploy hook -> New Relic API adapter",
   "repository": "https://github.com/stenington/nrwantsheaders.git",
-  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "logo": "https://raw.githubusercontent.com/stenington/nrwantsheaders/master/nrwantsheaders-logo.png",
   "keywords": [],
   "env": {
     "WEBHOOK_PATH_1": {
