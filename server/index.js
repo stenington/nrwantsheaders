@@ -28,7 +28,9 @@ module.exports = function(env) {
 
   var app = express();
   app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(morgan('short'));
+  if ('development' == app.get('env')) {
+    app.use(morgan('dev'));
+  }
 
   configs.forEach(function (config) {
     app.post('/' + config.webhook_path, function (req, res, next) {
