@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var winston = require('winston');
 var request = require('request');
 
 module.exports = function(env) {
@@ -21,7 +22,7 @@ module.exports = function(env) {
           key: key,
           webhook_path: path
         });
-        console.log(`Config parsed for WEBHOOK_PATH_${idx}=${path}`);
+        winston.info(`Config parsed for WEBHOOK_PATH_${idx}=${path}`);
       }
     }
   }
@@ -34,7 +35,7 @@ module.exports = function(env) {
 
   configs.forEach(function (config) {
     app.post('/' + config.webhook_path, function (req, res, next) {
-      console.log('heroku ->\n', JSON.stringify(req.body, null, 2));
+      winston.info('heroku ->', req.body);
 
       var opts = {
         url: 'https://api.newrelic.com/v2/applications/' + config.app_id + '/deployments.json',
@@ -49,9 +50,9 @@ module.exports = function(env) {
           }
         }
       }
-      console.log('new relic ->\n', JSON.stringify(opts, null, 2));
+      winston.info('new relic ->', opts);
       request.post(opts, function (err, res, body) {
-        console.log('new relic <-\n', JSON.stringify({err: err, body: body}, null, 2));
+        winston.info('new relic <-', {err: err, body: body});
       });
 
       res.status(200).send('OK');
